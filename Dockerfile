@@ -22,13 +22,22 @@ COPY fmbox.py .
 COPY labellang.py .
 RUN chmod +x *.py
 
-# Create a user (gyb) that has UID=1000 to avoid file permission issues later
-ENV user gyb
-RUN useradd -m -d /home/${user} -u 1000 ${user} \
-    && chown -R ${user} /home/${user} \
-    && chown -R ${user} /app
+# Create a user (gyb) that has UID=1026 to avoid file permission issues later
+ENV USER gyb
+ENV UID=1026
+ENV GID=100
 
-USER ${user}
+RUN adduser \
+    --disabled-password \
+    --no-create-home \
+    --gecos "" \
+    --home "$(pwd)" \
+    --uid "$UID" \
+    --gid "$GID" \
+    "$USER"
+RUN chown -R ${USER} /app
+
+USER ${USER}
 
 VOLUME ["/data"]
 

@@ -10,9 +10,6 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-# Trick GYB into storing data in the docker volume. Make sure it ends in '/'
-ENV STATICX_PROG_PATH=/data/
-
 WORKDIR "/app"
 
 COPY requirements.txt .

@@ -49,3 +49,10 @@ Uses context from a clone of the GYB repo (or your own custom version).
 ## Build with caching
 
 `cd <path to got-your-back git repo>/got-your-back && docker build --rm --pull -f "<path to code>/gyb-docker/Dockerfile" -t "gyb:latest" .`
+
+## Push to Docker Hub
+
+See https://hub.docker.com/repository/docker/ionicblue/gyb/tags?page=1&ordering=last_updated
+
+`docker login`
+`docker push ionicblue/gyb:latest`
